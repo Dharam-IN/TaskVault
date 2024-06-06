@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import React from 'react'
-import { Button } from './ui/button'
 
 const Navbar = () => {
     return (
@@ -11,7 +10,7 @@ const Navbar = () => {
                         Task Vault
                     </a>
                     <Link href="/signin">
-                        <Button className="w-full md:w-auto bg-slate-100 text-black" variant={'outline'}>Login</Button>
+                        india
                     </Link>
                 </div>
             </nav>

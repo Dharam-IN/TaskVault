@@ -1,4 +1,3 @@
-import { Link2 } from 'lucide-react'
 import Link from 'next/link'
 import React from 'react'
 import { FaInstagram, FaLinkedin, FaXTwitter } from 'react-icons/fa6'
