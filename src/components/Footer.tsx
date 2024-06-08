@@ -42,7 +42,7 @@ const Footer = () => {
                         </div>
                         <hr className="border-gray-600" />
                         <p className="w-full text-center my-12 text-gray-300">
-                            Copyright © {new Date().getFullYear()} <Link href={"https://x.com/Dharam__IN"} target='_blank'>Dharam-in</Link>
+                            Copyright © {new Date().getFullYear()} <Link href={"https://github.com/Dharam-IN"} target='_blank'>Dharam-in</Link>
                         </p>
                     </div>
                 </div>
