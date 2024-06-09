@@ -14,15 +14,12 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL('/profile', request.url))
   }
 
-  return NextResponse.redirect(new URL('/home', request.url))
+  if(!token && url.pathname.startsWith("/profile")){
+    return NextResponse.redirect(new URL('/signin', request.url))
+  }
 }
  
 // See "Matching Paths" below to learn more
 export const config = {
-  matcher: [
-    '/signin',
-    // 'signup',
-    // '/',
-    // '/profile/:path*'
-  ],
-}
+  matcher: ['/signin', '/signup', '/', '/verify/:path*'],
+};
