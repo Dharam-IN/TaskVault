@@ -1,55 +1,87 @@
-import Link from 'next/link'
-import React from 'react'
-import { FaInstagram, FaLinkedin, FaXTwitter } from 'react-icons/fa6'
-import { FaGithub, FaLinkedinIn } from "react-icons/fa";
+'use client'
+import React, { useEffect, useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { Container } from "./Container";
+import { FaTwitter, FaFacebook, FaInstagram, FaLinkedin, FaGithub } from "react-icons/fa";
+import { useTheme } from "next-themes";
 
 const Footer = () => {
-    return (
-        <>
-            <div className="w-full flex items-center justify-center bg-gray-900">
-                <div className="md:w-2/3 w-full px-4 text-white flex flex-col">
-                    <div className="flex flex-col">
-                        <div className="flex mt-24 mb-12 flex-row justify-between">
-                            <div className="">
-                                <h4>Task Vault</h4>
-                            </div>
-                            <a className="hidden md:block cursor-pointer text-gray-600 hover:text-white uppercase">
-                                About
-                            </a>
-                            <a className="hidden md:block cursor-pointer text-gray-600 hover:text-white uppercase">
-                                Services
-                            </a>
-                            <a className="hidden md:block cursor-pointer text-gray-600 hover:text-white uppercase">
-                                Why us
-                            </a>
-                            <a className="hidden md:block cursor-pointer text-gray-600 hover:text-white uppercase">
-                                Contact
-                            </a>
-                            <div className="flex flex-row space-x-3 items-center justify-between">
-                                <Link href={"https://github.com/Dharam-IN/"} target='_blank' className='text-xl hover:text-gray-600 transition-colors duration-300 bg-white text-gray-800 p-2 rounded-[7px]'>
-                                    <FaGithub/>
-                                </Link>
-                                <Link href={"https://www.instagram.com/freakycoders/"} target='_blank' className='text-xl hover:text-gray-600 transition-colors duration-300 bg-white text-gray-800 p-2 rounded-[7px]'>
-                                    <FaInstagram/>
-                                </Link>
-                                <Link href={"https://www.linkedin.com/in/dharam-in/"} target='_blank' className='text-xl hover:text-gray-600 transition-colors duration-300 bg-white text-gray-800 p-2 rounded-[7px]'>
-                                    <FaLinkedinIn/>
-                                </Link>
-                                <Link href={"https://x.com/Dharam__IN"} target='_blank' className='text-xl hover:text-gray-600 transition-colors duration-300 bg-white text-gray-800 p-2 rounded-[7px]'>
-                                    <FaXTwitter/>
-                                </Link>
-                            </div>
-                        </div>
-                        <hr className="border-gray-600" />
-                        <p className="w-full text-center my-12 text-gray-300">
-                            Copyright © {new Date().getFullYear()} <Link href={"https://github.com/Dharam-IN"} target='_blank'>Dharam-in</Link>
-                        </p>
-                    </div>
-                </div>
+  const navigation = ["Home", "About", "Contact", "Company", "Blog"];
+  const legal = ["Terms", "Privacy", "Legal"];
+
+  const { theme, systemTheme } = useTheme();
+  const [currentTheme, setCurrentTheme] = useState(theme);
+  console.log(currentTheme)
+  
+  useEffect(() => {
+    setCurrentTheme(theme === "system" ? systemTheme : theme);
+  }, [theme, systemTheme, currentTheme]);
+
+
+  return (
+    <footer className="relative">
+      <Container>
+        <div className="grid max-w-screen-xl grid-cols-1 gap-10 pt-10 mx-auto mt-5 border-t border-gray-100 dark:border-trueGray-700 lg:grid-cols-5">
+          <div className="lg:col-span-2">
+            <div>
+              <Link href="/" className="flex items-center space-x-2 text-2xl font-medium text-indigo-500 dark:text-gray-100" passHref>
+                  <Image 
+                    src={currentTheme === "dark" ? "/Images/TaskLight.png" : "/Images/TaskDark.png"} 
+                    alt="Logo"
+                    width="80"
+                    height="32"/>
+              </Link>
             </div>
 
-        </>
-    )
-}
+            <div className="max-w-md mt-4 text-gray-500 dark:text-gray-400">
+                At TaskVault, our mission is to simplify your life by providing an intuitive and powerful task management tool.
+            </div>
+          </div>
 
-export default Footer
+          <div className="flex flex-col space-y-2">
+            {navigation.map((item, index) => (
+              <Link key={index} href="/" className="text-gray-500 dark:text-gray-300 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none dark:focus:bg-trueGray-700" passHref>
+                  {item}
+              </Link>
+            ))}
+          </div>
+
+          <div className="flex flex-col space-y-2">
+            {legal.map((item, index) => (
+              <Link key={index} href="/" className="text-gray-500 dark:text-gray-300 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none dark:focus:bg-trueGray-700" passHref>
+                  {item}
+              </Link>
+            ))}
+          </div>
+
+          <div className="flex flex-col space-y-5">
+            <div>Follow us</div>
+            <div className="flex space-x-5 text-gray-400 dark:text-gray-500">
+              <Link href="https://twitter.com/Dharam__IN" target="_blank" rel="noopener noreferrer">
+                <FaTwitter size={24} className="hover:text-indigo-500" />
+              </Link>
+              <Link href="https://github.com/dharam-in" target="_blank" rel="noopener noreferrer">
+                <FaGithub size={24} className="hover:text-indigo-500" />
+              </Link>
+              <Link href="https://linkedin.com/in/dharam-in" target="_blank" rel="noopener noreferrer">
+                <FaLinkedin size={24} className="hover:text-indigo-500" />
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        <div className="my-10 text-sm text-center text-gray-600 dark:text-gray-400">
+          Copyright © {new Date().getFullYear()}. Made with ♥ by{" "}
+          <Link href="https://github.com/dharam-in" target="_blank" rel="noopener noreferrer" className="text-indigo-500 font-bold">
+            Dharam
+          </Link>{" "}
+        </div>
+      </Container>
+      {/* Do not remove this */}
+      {/* <Backlink /> */}
+    </footer>
+  );
+};
+
+export default Footer;

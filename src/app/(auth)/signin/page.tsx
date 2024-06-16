@@ -1,33 +1,27 @@
-'use client'
+"use client"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { useForm } from "react-hook-form"
-import * as z from "zod"
-import {useDebounceValue, useDebounceCallback} from 'usehooks-ts'
+import { useDebounceCallback } from 'usehooks-ts'
 import { useToast } from "@/components/ui/use-toast"
 import { useRouter } from "next/navigation"
-import { signupSchema } from "@/Schema/signUpSchema"
-import axios, { AxiosError } from 'axios'
-import { ApiResponse } from "@/types/ApiResponse"
+import { signInSchema } from "@/Schema/signinSchema"
+import { signIn } from "next-auth/react"
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Loader2 } from "lucide-react"
 import Link from "next/link"
-import { signInSchema } from "@/Schema/signinSchema"
-import { signIn } from "next-auth/react"
 import { Separator } from "@/components/ui/separator"
 import { FaGoogle } from "react-icons/fa6"
+import { useTheme } from "next-themes"
+import * as z from 'zod'
 
-
-const page = () => {
-  const [username, setUsername] = useState('');
-  const [usernameMessage, setUsernameMessage] = useState('');
+const Page = () => {
   const [isSubmitting, setIsSubmitting] = useState(false)
-
-  const debounced = useDebounceCallback(setUsername, 300)
   const { toast } = useToast()
-  const router = useRouter();
+  const router = useRouter()
+  const { theme } = useTheme()
 
   // ZOD Implementation
   const form = useForm<z.infer<typeof signInSchema>>({
@@ -44,33 +38,31 @@ const page = () => {
       redirect: false,
       identifier: data.identifier,
       password: data.password
-    });
-    console.log("Console is Result Login", result)
-    console.log("Console Login")
+    })
     if (result?.error) {
       if (result.error === 'CredentialsSignin') {
         toast({
           title: 'Login Failed',
           description: 'Incorrect username or password',
           variant: 'destructive',
-        });
+        })
       } else {
         toast({
           title: 'Error',
           description: result.error,
           variant: 'destructive',
-        });
+        })
       }
     }
     setIsSubmitting(false)
     if (result?.url) {
-      router.replace('/dashboard');
+      router.replace('/dashboard')
     }
   }
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-800">
-      <div className="w-full max-w-md p-8 space-y-4 bg-white rounded-lg shadow-md">
+    <div className={`flex justify-center items-center md:min-h-screen min-h-[70vh] md:px-0 px-5 bg-gray-100 dark:bg-gray-900`}>
+      <div className={`w-full max-w-md p-8 space-y-4 bg-white text-gray dark:bg-gray-800 dark:text-white rounded-lg shadow-md`}>
         <div className="text-center">
           <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl mb-6">
             Join TaskVault
@@ -79,59 +71,56 @@ const page = () => {
         </div>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-              <FormField
+            <FormField
               control={form.control}
               name="identifier"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Email/Username</FormLabel>
                   <FormControl>
-                    <Input placeholder="email/username"
-                     {...field}
-                     />
+                    <Input placeholder="email/username" {...field} />
                   </FormControl>
                   <FormMessage />
-              </FormItem>
+                </FormItem>
               )}
-              />
-              <FormField
+            />
+            <FormField
               control={form.control}
               name="password"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Password</FormLabel>
                   <FormControl>
-                    <Input placeholder="Password"
-                     {...field}
-                     />
+                    <Input type="password" placeholder="Password" {...field} />
                   </FormControl>
                   <FormMessage />
-              </FormItem>
+                </FormItem>
               )}
-              />
-              <Button type="submit" disabled={isSubmitting}>
-                {isSubmitting ? (<><Loader2 className="mr-2 h-4 w-4 animate-spin"/> Please Wait</>) : ('Signup')}
-              </Button>
+            />
+            <Button type="submit" disabled={isSubmitting} className="w-full">
+              {isSubmitting ? (
+                <>
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Please Wait
+                </>
+              ) : (
+                'Sign In'
+              )}
+            </Button>
           </form>
         </Form>
-        {/* <Separator /> */}
-        <div className="relative flex py-5 items-center">
-          <div className="flex-grow border-t border-gray-400"></div>
-          <span className="flex-shrink mx-4 text-gray-400">OR</span>
-          <div className="flex-grow border-t border-gray-400"></div>
-        </div>
+        <Separator />
         <button
-            className="flex items-center justify-center py-2 px-20 bg-white hover:bg-gray-200 focus:ring-blue-500 focus:ring-offset-blue-200 text-gray-700 w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg"
-            onClick={() => signIn('google')}
-          >
-            <FaGoogle/>
-            <span className="ml-2">Sign in with Google</span>
-          </button>
+          className={`flex items-center justify-center py-2 px-20 bg-white text-gray-700 dark:bg-gray-700 dark:text-white hover:bg-gray-200 focus:ring-blue-500 focus:ring-offset-blue-200 w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg`}
+          onClick={() => signIn('google')}
+        >
+          <FaGoogle />
+          <span className="ml-2">Sign in with Google</span>
+        </button>
         <div className="text-center mt-4">
           <p>
             Already a member?{' '}
-            <Link href="/signup" className="text-blue-600 hover:text-blue-800">
-              Sign up
+            <Link href="/signup" className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-600">
+                Sign up
             </Link>
           </p>
         </div>
@@ -140,4 +129,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page
