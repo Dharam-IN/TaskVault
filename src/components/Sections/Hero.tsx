@@ -1,51 +1,42 @@
+'use client'
 import Image from "next/image";
 import { Container } from "../Container";
 import Link from "next/link";
 import { FaGithub } from "react-icons/fa";
-// import heroImg from "/Images/hero.png";
 
 export const Hero = () => {
   return (
     <>
-      <Container className="flex flex-wrap ">
+      <Container className="flex flex-wrap">
         <div className="flex items-center w-full lg:w-1/2">
           <div className="max-w-2xl mb-8">
             <h1 className="text-4xl font-bold leading-snug tracking-tight text-gray-800 lg:text-4xl lg:leading-tight xl:text-6xl xl:leading-tight dark:text-white">
-              Free Landing Page Template for startups
+              TaskVault: Your Task Management Solution
             </h1>
             <p className="py-5 text-xl leading-normal text-gray-500 lg:text-xl xl:text-2xl dark:text-gray-300">
-              Nextly is a free landing page & marketing website
-              template for startups and indie projects. Its built with
-              Next.js & TailwindCSS. And its completely open-source.
+              TaskVault is a robust task management platform designed to streamline your workflow. Built with Next.js & TailwindCSS, it's open-source and customizable to fit your needs.
             </p>
 
             <div className="flex flex-col items-start space-y-3 sm:space-x-4 sm:space-y-0 sm:items-center sm:flex-row">
-              <Link href="/dashboard"
-                rel="noopener"
-                className="px-8 py-4 text-lg font-medium text-center text-white bg-indigo-600 rounded-md ">
+              <Link href="/dashboard" rel="noopener" className="px-8 py-4 text-lg font-medium text-center text-white bg-indigo-600 rounded-md">
                 Go to Dashboard
               </Link>
-              <Link
-                href="https://github.com/Dharam-IN/TaskVault"
-                target="_blank"
-                rel="noopener"
-                className="flex items-center space-x-2 text-gray-500 dark:text-gray-400">
-                <FaGithub/>
+              <Link href="https://github.com/Dharam-IN/TaskVault" target="_blank" rel="noopener" className="flex items-center space-x-2 text-gray-500 dark:text-gray-400">
+                <FaGithub />
                 <span> View on Github</span>
               </Link>
             </div>
           </div>
         </div>
         <div className="flex items-center justify-center w-full lg:w-1/2">
-          <div className="">
+          <div>
             <Image
               src="/Images/hero.png"
-              width="616"
+              width="916"
               height="617"
               className={"object-cover"}
               alt="Hero Illustration"
               loading="eager"
-              // placeholder="blur"
             />
           </div>
         </div>
