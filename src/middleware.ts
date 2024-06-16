@@ -1,25 +1,35 @@
-import {NextRequest, NextResponse } from 'next/server'
-export { default } from "next-auth/middleware"
-import {getToken} from 'next-auth/jwt'
-// This function can be marked `async` if using `await` inside
+import { NextRequest, NextResponse } from 'next/server';
+import { getToken } from 'next-auth/jwt';
+export { default } from 'next-auth/middleware';
+
 export async function middleware(request: NextRequest) {
-  
-  const token = await getToken({req: request});
+  const token = await getToken({ req: request, secret: process.env.AUTH_SECRET });
   const url = request.nextUrl;
 
-  if(token && (
-    url.pathname.startsWith("/signin") ||
-    url.pathname.startsWith("/signup")
-  )){
-    return NextResponse.redirect(new URL('/profile', request.url))
+  console.log("Middleware Token:", token);
+  console.log("Middleware URL:", url.pathname);
+
+  if (token) {
+    console.log("Token found, user authenticated");
+
+    if (url.pathname.startsWith('/signin') || url.pathname.startsWith('/signup')) {
+      console.log("Redirecting to /profile because user is authenticated");
+      return NextResponse.redirect(new URL('/dashboard', request.url));
+    }
+  } else {
+    console.log("No token found, user not authenticated");
+
+    if (url.pathname.startsWith('/dashboard')) {
+      console.log("Redirecting to /signin because user is not authenticated");
+      return NextResponse.redirect(new URL('/signin', request.url));
+    }
   }
 
-  if(!token && url.pathname.startsWith("/profile")){
-    return NextResponse.redirect(new URL('/signin', request.url))
-  }
+  // Default response if no condition matches
+  return NextResponse.next();
 }
- 
+
 // See "Matching Paths" below to learn more
 export const config = {
-  matcher: ['/signin', '/signup', '/', '/verify/:path*'],
+  matcher: ['/signin', '/signup', '/dashboard', '/verify/:path*'],
 };

@@ -32,10 +32,10 @@ const VerifyAccount = () => {
             toast({
                 title: "Success",
                 description: response.data.message,
-                variant: 'destructive'
+                variant: 'default'
             })
 
-            router.replace('signin')
+            router.replace('/signin')
 
         } catch (error) {
             const axiosError = error as AxiosError<ApiResponse>;

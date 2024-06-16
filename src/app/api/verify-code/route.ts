@@ -1,7 +1,8 @@
 import dbConnect from "@/lib/dbConnect";
 import UserModel from "@/model/user.model";
 
-async function POST(request: Request){
+export async function POST(request: Request){
+    // console.log("Received request for verification");
     await dbConnect();
     try {
         const {username, code} = await request.json();
@@ -19,6 +20,10 @@ async function POST(request: Request){
         const isCodeNotExpire = new Date(user.verifyCodeExpiry) > new Date()
 
         if(isValidCode && isCodeNotExpire){
+
+            user.isVerified = true
+            await user.save()
+
             return Response.json({
                 success: true,
                 message: "Account Verify Successfully!"

@@ -15,7 +15,6 @@ import { Button } from "@/components/ui/button"
 import { Loader2 } from "lucide-react"
 import Link from "next/link"
 
-
 const page = () => {
   const [username, setUsername] = useState('');
   const [usernameMessage, setUsernameMessage] = useState('');
@@ -135,7 +134,7 @@ const page = () => {
                 <FormItem>
                   <FormLabel>Password</FormLabel>
                   <FormControl>
-                    <Input placeholder="email"
+                    <Input placeholder="Password"
                      {...field}
                      />
                   </FormControl>

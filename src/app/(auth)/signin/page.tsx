@@ -16,6 +16,8 @@ import { Loader2 } from "lucide-react"
 import Link from "next/link"
 import { signInSchema } from "@/Schema/signinSchema"
 import { signIn } from "next-auth/react"
+import { Separator } from "@/components/ui/separator"
+import { FaGoogle } from "react-icons/fa6"
 
 
 const page = () => {
@@ -35,7 +37,6 @@ const page = () => {
       password: ''
     }
   })
-  
 
   const onSubmit = async (data: z.infer<typeof signInSchema>) => {
     setIsSubmitting(true)
@@ -44,23 +45,32 @@ const page = () => {
       identifier: data.identifier,
       password: data.password
     });
-
-    if(result?.error){
-      toast({
-        title: "Login Failed",
-        description: "Incorrect Username and Pasword",
-        variant: "destructive"
-      })
+    console.log("Console is Result Login", result)
+    console.log("Console Login")
+    if (result?.error) {
+      if (result.error === 'CredentialsSignin') {
+        toast({
+          title: 'Login Failed',
+          description: 'Incorrect username or password',
+          variant: 'destructive',
+        });
+      } else {
+        toast({
+          title: 'Error',
+          description: result.error,
+          variant: 'destructive',
+        });
+      }
     }
-    
-    if(result?.url){
-      router.replace("/dashboard")
+    setIsSubmitting(false)
+    if (result?.url) {
+      router.replace('/dashboard');
     }
   }
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-800">
-      <div className="w-full max-w-md p-8 space-y-8 bg-white rounded-lg shadow-md">
+      <div className="w-full max-w-md p-8 space-y-4 bg-white rounded-lg shadow-md">
         <div className="text-center">
           <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl mb-6">
             Join TaskVault
@@ -91,7 +101,7 @@ const page = () => {
                 <FormItem>
                   <FormLabel>Password</FormLabel>
                   <FormControl>
-                    <Input placeholder="email"
+                    <Input placeholder="Password"
                      {...field}
                      />
                   </FormControl>
@@ -104,6 +114,19 @@ const page = () => {
               </Button>
           </form>
         </Form>
+        {/* <Separator /> */}
+        <div className="relative flex py-5 items-center">
+          <div className="flex-grow border-t border-gray-400"></div>
+          <span className="flex-shrink mx-4 text-gray-400">OR</span>
+          <div className="flex-grow border-t border-gray-400"></div>
+        </div>
+        <button
+            className="flex items-center justify-center py-2 px-20 bg-white hover:bg-gray-200 focus:ring-blue-500 focus:ring-offset-blue-200 text-gray-700 w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg"
+            onClick={() => signIn('google')}
+          >
+            <FaGoogle/>
+            <span className="ml-2">Sign in with Google</span>
+          </button>
         <div className="text-center mt-4">
           <p>
             Already a member?{' '}

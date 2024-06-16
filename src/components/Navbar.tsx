@@ -1,5 +1,8 @@
+'use client'
+import { signOut } from 'next-auth/react'
 import Link from 'next/link'
 import React from 'react'
+import { Button } from './ui/button'
 
 const Navbar = () => {
     return (
@@ -9,9 +12,14 @@ const Navbar = () => {
                     <a href="#" className="text-xl font-bold mb-4 md:mb-0">
                         Task Vault
                     </a>
-                    <Link href="/signin">
-                        india
-                    </Link>
+                    <div className='flex gap-5 items-center'>
+                        <Link href="/signin">
+                            india
+                        </Link>
+                        <Button variant="destructive" onClick={() => signOut()}>
+                            Logout
+                        </Button>
+                    </div>
                 </div>
             </nav>
         </>
