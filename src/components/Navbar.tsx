@@ -24,7 +24,7 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const { data: session } = useSession();
-  console.log(session)
+  // console.log(session)
 
   useEffect(() => {
     setCurrentTheme(theme === "system" ? systemTheme : theme);

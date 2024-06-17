@@ -13,7 +13,6 @@ export const metadata: Metadata = {
   title: "TaskVault - Dharam App",
   description: "Create Your daily tasks",
 };
-
 export default function RootLayout({
   children,
 }: Readonly<{
