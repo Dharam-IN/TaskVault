@@ -5,7 +5,8 @@ export interface Task extends Document{
     task: string;
     description: string;
     createAt: Date;
-    completed: boolean
+    completed: boolean;
+    category: string
 }
 
 
@@ -30,6 +31,10 @@ const TaskSchema: Schema<Task> = new Schema({
     completed: {
         type: Boolean,
         default: false
+    },
+    category: {
+        type: String,
+        required: true
     }
 })
 

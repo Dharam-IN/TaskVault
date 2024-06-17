@@ -24,6 +24,7 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const { data: session } = useSession();
+  console.log(session)
 
   useEffect(() => {
     setCurrentTheme(theme === "system" ? systemTheme : theme);
@@ -73,7 +74,7 @@ const Navbar = () => {
                   <>
                     <Avatar>
                       <AvatarImage src={session.user.image} alt="Avatar" />
-                      <AvatarFallback>{session.user.name[0].toUpperCase()}</AvatarFallback>
+                      <AvatarFallback>{session.user.username[0].toUpperCase()}</AvatarFallback>
                     </Avatar>
                     <Button className="px-6 py-2 text-white bg-indigo-600 rounded-md" onClick={() => signOut()}>
                       Logout
@@ -111,11 +112,11 @@ const Navbar = () => {
           <ThemeChanger />
           {session ? (
             <div className="flex items-center space-x-4">
-              <Avatar>
+              <Avatar className="bg-gray-500 dark:bg-black">
                 <AvatarImage src={session.user.image} alt="Avatar" />
-                <AvatarFallback>{session.user.name[0].toUpperCase()}</AvatarFallback>
+                <AvatarFallback>{session.user.name ? (session.user.name[0].toUpperCase()) : (session.user.username[0].toUpperCase())}</AvatarFallback>
               </Avatar>
-              <Button className="px-6 py-2 text-white bg-indigo-600 rounded-md" onClick={() => signOut()}>
+              <Button className="px-6 py-2 text-white bg-indigo-600 rounded-md dark:text-white" onClick={() => signOut()}>
                 Logout
               </Button>
             </div>

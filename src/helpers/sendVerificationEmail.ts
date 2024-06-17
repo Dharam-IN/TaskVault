@@ -9,12 +9,13 @@ export async function sendVerificationEmail(
 ): Promise<ApiResponse>{
     try {
 
-        await resend.emails.send({
+        const resendemail = await resend.emails.send({
             from: 'onboarding@resend.dev',
             to: email,
             subject: 'TodoVault | Verification Code!',
             react: VerificationEmail({username, otp: verifyCode}),
         });
+        console.log(resendemail)
 
         return {success: true, message: "Verification Code Send Successfully!"}
     } catch (error) {

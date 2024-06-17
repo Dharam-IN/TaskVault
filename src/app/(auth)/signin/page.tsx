@@ -80,7 +80,7 @@ const Page = () => {
                   <FormControl>
                     <Input placeholder="email/username" {...field} />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className="text-red-600"/>
                 </FormItem>
               )}
             />
@@ -93,11 +93,11 @@ const Page = () => {
                   <FormControl>
                     <Input type="password" placeholder="Password" {...field} />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className="text-red-600" />
                 </FormItem>
               )}
             />
-            <Button type="submit" disabled={isSubmitting} className="w-full">
+            <Button type="submit" disabled={isSubmitting} className="bg-gray-900 dark:text-white text-white w-full">
               {isSubmitting ? (
                 <>
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Please Wait

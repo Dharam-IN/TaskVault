@@ -11,10 +11,10 @@ import { useRouter } from "next/navigation"
 import { signupSchema } from "@/Schema/signUpSchema"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
 import { Loader2 } from "lucide-react"
 import Link from "next/link"
 import { useTheme } from "next-themes"
+import { Button } from "@/components/ui/button"
 
 const Page = () => {
   const [username, setUsername] = useState('');
@@ -112,7 +112,7 @@ const Page = () => {
                   <p className={`text-sm ${usernameMessage === "Username Is Unique" ? 'text-green-500' : 'text-red-500'}`}>
                     {usernameMessage}
                   </p>
-                  <FormMessage />
+                  <FormMessage className="text-red-600" />
                 </FormItem>
               )}
             />
@@ -125,7 +125,7 @@ const Page = () => {
                   <FormControl>
                     <Input placeholder="Email" {...field} />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className="text-red-600" />
                 </FormItem>
               )}
             />
@@ -138,11 +138,11 @@ const Page = () => {
                   <FormControl>
                     <Input type="password" placeholder="Password" {...field} />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className="text-red-600" />
                 </FormItem>
               )}
             />
-            <Button type="submit" disabled={isSubmitting}>
+            <Button type="submit" variant={"destructive"} disabled={isSubmitting} className="bg-gray-900 dark:text-white text-white w-full">
               {isSubmitting ? (
                 <>
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Please Wait

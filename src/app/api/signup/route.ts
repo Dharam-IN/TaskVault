@@ -74,6 +74,7 @@ export async function POST(request: Request){
                 message: emailResponse.message
             }, {status: 500});
         }
+        console.log(emailResponse)
 
         return Response.json({
             success: true,

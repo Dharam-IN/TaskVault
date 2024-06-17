@@ -6,8 +6,8 @@ export async function middleware(request: NextRequest) {
   const token = await getToken({ req: request, secret: process.env.AUTH_SECRET });
   const url = request.nextUrl;
 
-  console.log("Middleware Token:", token);
-  console.log("Middleware URL:", url.pathname);
+  // console.log("Middleware Token:", token);
+  // console.log("Middleware URL:", url.pathname);
 
   if (token) {
     console.log("Token found, user authenticated");
@@ -17,7 +17,7 @@ export async function middleware(request: NextRequest) {
       return NextResponse.redirect(new URL('/dashboard', request.url));
     }
   } else {
-    console.log("No token found, user not authenticated");
+    // console.log("No token found, user not authenticated");
 
     if (url.pathname.startsWith('/dashboard')) {
       console.log("Redirecting to /signin because user is not authenticated");
