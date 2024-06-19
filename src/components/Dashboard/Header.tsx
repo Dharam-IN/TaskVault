@@ -2,6 +2,7 @@ import React from 'react'
 import { AiOutlineSearch, AiOutlineBell, AiOutlineMenu } from 'react-icons/ai'
 import { Button } from '../ui/button'
 import Link from 'next/link'
+import { FaPlus } from "react-icons/fa";
 
 interface HeaderProps {
   toggleSidebar: () => void
@@ -24,8 +25,8 @@ const Header: React.FC<HeaderProps> = ({ toggleSidebar }) => {
         />
       </div>
       <div className="flex items-center space-x-4">
-        <Link href={"/taskform"}>
-            Create task
+        <Link href={"/taskform"} className='px-6 py-2 text-white bg-indigo-600 rounded-md flex items-center gap-3'>
+            <span>Create task</span> <FaPlus />
         </Link>
         <AiOutlineBell size={24} className="text-gray-500 dark:text-gray-400" />
       </div>

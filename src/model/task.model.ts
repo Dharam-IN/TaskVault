@@ -2,11 +2,11 @@ import mongoose, { Document, Schema } from "mongoose";
 
 export interface Task extends Document{
     userId: mongoose.Types.ObjectId;
-    task: string;
-    description: string;
+    title: string;
     createAt: Date;
     completed: boolean;
-    category: string
+    category: string;
+    dueDate: Date;
 }
 
 
@@ -16,13 +16,9 @@ const TaskSchema: Schema<Task> = new Schema({
         ref: "User",
         required: [true, "UserID is required"]
     },
-    task: {
+    title: {
         type: String,
         required: [true, "Task Field is required"]
-    },
-    description: {
-        type: String,
-        required: [true, "Description is required"]
     },
     createAt: {
         type: Date,
@@ -35,6 +31,10 @@ const TaskSchema: Schema<Task> = new Schema({
     category: {
         type: String,
         required: true
+    },
+    dueDate: {
+        type: Date,
+        required: [true, "Due Date is Required"]
     }
 })
 

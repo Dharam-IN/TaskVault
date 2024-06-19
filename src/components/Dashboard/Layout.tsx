@@ -13,7 +13,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         setShowSidebar(!showSidebar);
       };
   return (
-    <div className={`flex h-screen bg-gray-100 dark:bg-gray-900`}>
+    <div className={`flex bg-gray-100 dark:bg-gray-900`}>
       <Sidebar showSidebar={showSidebar} toggleSidebar={toggleSidebar} />
       <div className="flex-1 flex flex-col">
         <Header toggleSidebar={toggleSidebar} />
