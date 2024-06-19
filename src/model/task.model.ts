@@ -1,6 +1,6 @@
 import mongoose, { Document, Schema } from "mongoose";
 
-export interface Task extends Document{
+export interface Tasks extends Document{
     userId: mongoose.Types.ObjectId;
     title: string;
     createAt: Date;
@@ -10,11 +10,11 @@ export interface Task extends Document{
 }
 
 
-const TaskSchema: Schema<Task> = new Schema({
+const TaskSchema: Schema<Tasks> = new Schema({
     userId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
-        required: [true, "UserID is required"]
+        // required: [true, "UserID is required"]
     },
     title: {
         type: String,
@@ -26,7 +26,7 @@ const TaskSchema: Schema<Task> = new Schema({
     },
     completed: {
         type: Boolean,
-        default: false
+        default: false,
     },
     category: {
         type: String,
@@ -38,6 +38,6 @@ const TaskSchema: Schema<Task> = new Schema({
     }
 })
 
-const TaskModel = mongoose.models.Task as mongoose.Model<Task> || mongoose.model("Task", TaskSchema)
+const TaskModel = mongoose.models.Tasks as mongoose.Model<Tasks> || mongoose.model("Tasks", TaskSchema)
 
 export default TaskModel;

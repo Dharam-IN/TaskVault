@@ -9,7 +9,7 @@ export async function POST(request: Request){
     try {
         // console.log("Console Register Request Json:- ", request.json());
         const {username, email, password} = await request.json();
-
+        
         const existingUserByUsernameVerified = await UserModel.findOne({username, isVerified: true})
 
         if(existingUserByUsernameVerified){

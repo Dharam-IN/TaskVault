@@ -7,7 +7,7 @@ export async function middleware(request: NextRequest) {
   const url = request.nextUrl;
 
   // console.log("Middleware Token:", token);
-  // console.log("Middleware URL:", url.pathname);
+  console.log("Middleware URL:", url.pathname);
 
   if (token) {
     console.log("Token found, user authenticated");
@@ -19,7 +19,7 @@ export async function middleware(request: NextRequest) {
   } else {
     // console.log("No token found, user not authenticated");
 
-    if (url.pathname.startsWith('/dashboard')) {
+    if (url.pathname.startsWith('/dashboard') || url.pathname.startsWith('/taskform')) {
       console.log("Redirecting to /signin because user is not authenticated");
       return NextResponse.redirect(new URL('/signin', request.url));
     }
@@ -31,5 +31,5 @@ export async function middleware(request: NextRequest) {
 
 // See "Matching Paths" below to learn more
 export const config = {
-  matcher: ['/signin', '/signup', '/dashboard', '/verify/:path*'],
+  matcher: ['/signin', '/signup', '/dashboard', '/verify/:path*', '/taskform'],
 };

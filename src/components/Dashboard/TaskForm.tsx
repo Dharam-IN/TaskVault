@@ -35,9 +35,13 @@ import {
 } from "@/components/ui/popover"
 import { ToastAction } from '../ui/toast';
 import { useToast } from '../ui/use-toast';
+import axios, { AxiosError } from 'axios';
+import { ApiResponse } from '@/types/ApiResponse';
+import { Loader2 } from 'lucide-react';
 
 const TaskForm = () => {
   const [date, setDate] = useState<Date>();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
   const form = useForm<z.infer<typeof taskSchema>>({
@@ -50,11 +54,23 @@ const TaskForm = () => {
   });
 
   const onSubmit = async (data: z.infer<typeof taskSchema>) => {
+    
+    setIsSubmitting(true)
     console.log("Form data:", data);
     try {
-      
+      const response = await axios.post<ApiResponse>(`/api/add-task`, data)
+      console.log(response);
+      setIsSubmitting(false)
     } catch (error) {
-      
+      console.error("Error in Task Save", error);
+      const axiosError = error as AxiosError<ApiResponse>;
+      const errorMessage = axiosError.response?.data.message ?? "Unknown Error";
+      toast({
+        title: "Task Not Save",
+        description: errorMessage,
+        variant: "destructive",
+      });
+      setIsSubmitting(false)
     }
   };
 
@@ -169,7 +185,15 @@ const TaskForm = () => {
               </FormItem>
             )}
           />
-          <Button type="submit" variant={'default'} className='px-6 py-2 text-white bg-indigo-600 rounded-md'>Submit</Button>
+          <Button type="submit" variant={'default'} className='px-6 py-2 text-white bg-indigo-600 rounded-md'>
+          {isSubmitting ? (
+              <>
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Please Wait
+              </>
+            ) : (
+              'Submit'
+            )}
+          </Button>
         </form>
       </Form>
     </div>
