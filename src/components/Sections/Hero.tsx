@@ -14,7 +14,7 @@ export const Hero = () => {
               TaskVault: Your Task Management Solution
             </h1>
             <p className="py-5 text-xl leading-normal text-gray-500 lg:text-xl xl:text-2xl dark:text-gray-300">
-              TaskVault is a robust task management platform designed to streamline your workflow. Built with Next.js & TailwindCSS, it's open-source and customizable to fit your needs.
+              TaskVault is a robust task management platform designed to streamline your workflow. Built with Next.js &amp; TailwindCSS, it&apos;s open-source and customizable to fit your needs.
             </p>
 
             <div className="flex flex-col items-start space-y-3 sm:space-x-4 sm:space-y-0 sm:items-center sm:flex-row">
@@ -70,7 +70,6 @@ export const Hero = () => {
     </>
   );
 }
-
 function AmazonLogo() {
   return (
     <svg

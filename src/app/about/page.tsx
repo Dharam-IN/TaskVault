@@ -11,7 +11,7 @@ const page = () => {
           <h1 className="text-5xl font-bold text-gray-800 dark:text-white mb-6">About TaskVault</h1>
           <p className="text-xl text-gray-700 dark:text-gray-300 mb-4">Welcome to TaskVault!</p>
           <p className="text-lg text-gray-700 dark:text-gray-300">
-            TaskVault is your ultimate task management solution designed to help you stay organized, productive, and efficient. Whether you're a student, professional, or someone who wants to keep track of their daily activities, TaskVault has you covered.
+            TaskVault is your ultimate task management solution designed to help you stay organized, productive, and efficient. Whether you&apos;re a student, professional, or someone who wants to keep track of their daily activities, TaskVault has you covered.
           </p>
         </div>
 
@@ -72,7 +72,7 @@ const page = () => {
                 <strong>Flexible and Customizable:</strong> Tailor TaskVault to suit your personal or professional needs.
               </li>
               <li>
-                <strong>Constant Updates:</strong> We're always working to improve TaskVault with new features and enhancements based on user feedback.
+                <strong>Constant Updates:</strong> We&apos;re always working to improve TaskVault with new features and enhancements based on user feedback.
               </li>
             </ul>
             <Image

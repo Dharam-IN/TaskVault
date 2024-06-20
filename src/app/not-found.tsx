@@ -1,5 +1,4 @@
-// pages/404.tsx
-'use client'
+'use client';
 
 import { useEffect, useRef } from 'react';
 import Head from 'next/head';
@@ -50,10 +49,13 @@ const NotFoundPage = () => {
     }
 
     return () => clearInterval(intervalID);
-  }, []);
+  }, [txt]);
 
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-black text-lime-500 overflow-hidden w-screen absolute top-0 z-50 left-0">
+      <Head>
+        <title>Page Not Found</title>
+      </Head>
       <div className="main-wrapper">
         <div className="signboard-wrapper">
           <div className="signboard text-xl md:text-5xl">TaskVault</div>
@@ -66,7 +68,7 @@ const NotFoundPage = () => {
       <div className="msg font-mono text-xl md:text-5xl font-bold uppercase text-white bg-red-600 p-5 shadow-red-600 text-center animate-blink absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
         <button>404 - Page Not Found</button>
       </div>
-      <Link href={"/"} className='absolute top-[54%] bg-red-700 text-white p-4 font-bold'>Back To Home</Link>
+      <Link href="/" className="absolute top-[54%] bg-red-700 text-white p-4 font-bold">Back To Home</Link>
       <div id="console" ref={consoleRef} className="mt-5 font-mono font-bold text-[1.4rem] md:text-6xl leading-tight text-lime-500 text-shadow"></div>
 
       <style jsx>{`
@@ -74,7 +76,7 @@ const NotFoundPage = () => {
           0% {
             transform: rotate(0deg) translate(-50%, -50%);
           }
-          50%{
+          50% {
             transform: rotate(30deg) translate(-50%, -50%);
           }
           100% {

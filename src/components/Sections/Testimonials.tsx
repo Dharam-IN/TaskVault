@@ -12,7 +12,7 @@ export const Testimonials = () => {
       <div className="grid gap-10 lg:grid-cols-2 xl:grid-cols-3">
         <div className="lg:col-span-2 xl:col-auto">
           <div className="flex flex-col justify-between w-full h-full bg-gray-100 px-14 rounded-2xl py-14 dark:bg-trueGray-800">
-            <p className="text-2xl leading-normal ">
+            <p className="text-2xl leading-normal">
               TaskVault has transformed the way I manage my projects. The intuitive interface and powerful features make it an indispensable tool for staying organized and productive.
             </p>
 
@@ -25,8 +25,8 @@ export const Testimonials = () => {
         </div>
         <div className="">
           <div className="flex flex-col justify-between w-full h-full bg-gray-100 px-14 rounded-2xl py-14 dark:bg-trueGray-800">
-            <p className="text-2xl leading-normal ">
-              TaskVault's notification system ensures I never miss a deadline. It's like having a personal assistant that keeps me on track and focused.
+            <p className="text-2xl leading-normal">
+              TaskVault&apos;s notification system ensures I never miss a deadline. It&apos;s like having a personal assistant that keeps me on track and focused.
             </p>
 
             <Avatar
@@ -38,7 +38,7 @@ export const Testimonials = () => {
         </div>
         <div className="">
           <div className="flex flex-col justify-between w-full h-full bg-gray-100 px-14 rounded-2xl py-14 dark:bg-trueGray-800">
-            <p className="text-2xl leading-normal ">
+            <p className="text-2xl leading-normal">
               Since using TaskVault, our team collaboration has improved significantly. The ability to share tasks and work together in real-time has boosted our productivity.
             </p>
 
@@ -90,3 +90,5 @@ function Mark(props: { readonly children: React.ReactNode }) {
     </>
   );
 }
+
+export default Testimonials;

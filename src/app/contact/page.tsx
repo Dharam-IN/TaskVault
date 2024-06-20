@@ -11,7 +11,7 @@ const page = () => {
         <div className="text-center mb-12">
           <h1 className="text-5xl font-bold text-gray-800 dark:text-white mb-6">Contact Us</h1>
           <p className="text-xl text-gray-700 dark:text-gray-300 mb-4">
-            We're here to help and answer any question you might have. We look forward to hearing from you.
+            We&apos;re here to help and answer any question you might have. We look forward to hearing from you.
           </p>
         </div>
 
@@ -69,7 +69,6 @@ const page = () => {
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.012963327468!2d-122.41941558468124!3d37.774929179759295!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085818c5b4f64cb%3A0xdbc8bcd7963e8e2c!2sSan%20Francisco%2C%20CA!5e0!3m2!1sen!2sus!4v1623180845730!5m2!1sen!2sus"
               width="600"
               height="450"
-              // allowFullScreen="true"
               loading="lazy"
               className="w-full h-full"
             ></iframe>
