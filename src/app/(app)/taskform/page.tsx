@@ -1,3 +1,4 @@
+'use client'
 import Layout from '@/components/Dashboard/Layout';
 import TaskForm from '@/components/Dashboard/TaskForm';
 import React from 'react';
