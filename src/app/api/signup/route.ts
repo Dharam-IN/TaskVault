@@ -10,14 +10,14 @@ export async function POST(request: Request){
         // console.log("Console Register Request Json:- ", request.json());
         const {username, email, password} = await request.json();
         
-        const existingUserByUsernameVerified = await UserModel.findOne({username, isVerified: true})
+        // const existingUserByUsernameVerified = await UserModel.findOne({username, isVerified: true})
 
-        if(existingUserByUsernameVerified){
-            return Response.json({
-                success: false,
-                message: "Username Allready Taken"
-            })
-        }
+        // if(existingUserByUsernameVerified){
+        //     return Response.json({
+        //         success: false,
+        //         message: "Username Allready Taken"
+        //     })
+        // }
 
         const existingUserByEmail = await UserModel.findOne({email});
 

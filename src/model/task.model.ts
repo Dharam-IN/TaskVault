@@ -14,7 +14,7 @@ const TaskSchema: Schema<Tasks> = new Schema({
     userId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
-        // required: [true, "UserID is required"]
+        required: [true, "UserID is required"]
     },
     title: {
         type: String,

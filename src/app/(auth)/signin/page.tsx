@@ -76,9 +76,9 @@ const Page = () => {
               name="identifier"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Email/Username</FormLabel>
+                  <FormLabel>Email</FormLabel>
                   <FormControl>
-                    <Input placeholder="email/username" {...field} />
+                    <Input placeholder="email" {...field} />
                   </FormControl>
                   <FormMessage className="text-red-600"/>
                 </FormItem>

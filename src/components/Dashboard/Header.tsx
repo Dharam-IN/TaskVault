@@ -12,8 +12,8 @@ const Header: React.FC<HeaderProps> = ({ toggleSidebar }) => {
     console.log('Rendering Header');
 
   return (
-    <header className="flex items-center justify-between p-4 bg-white dark:bg-gray-800 shadow-md">
-      <button className="md:hidden" onClick={toggleSidebar}>
+    <header className="flex items-center justify-between p-4 gap-5 bg-white dark:bg-gray-800 shadow-md">
+      <button className="lg:hidden" onClick={toggleSidebar}>
         <AiOutlineMenu size={24} />
       </button>
       <div className="relative flex items-center w-full max-w-md">
@@ -26,7 +26,7 @@ const Header: React.FC<HeaderProps> = ({ toggleSidebar }) => {
       </div>
       <div className="flex items-center space-x-4">
         <Link href={"/taskform"} className='px-6 py-2 text-white bg-indigo-600 rounded-md flex items-center gap-3'>
-            <span>Create task</span> <FaPlus />
+            <span className='flex'><span className='hidden sm:block'>Create</span> Task</span> <FaPlus />
         </Link>
         <AiOutlineBell size={24} className="text-gray-500 dark:text-gray-400" />
       </div>

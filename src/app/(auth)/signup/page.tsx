@@ -97,10 +97,10 @@ const Page = () => {
               name="username"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Username</FormLabel>
+                  <FormLabel>Name</FormLabel>
                   <FormControl>
                     <Input
-                      placeholder="Username"
+                      placeholder="Name"
                       {...field}
                       onChange={(e) => {
                         field.onChange(e);

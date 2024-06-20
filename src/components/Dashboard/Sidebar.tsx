@@ -13,7 +13,7 @@ const Sidebar: React.FC<SidebarProps> = ({ showSidebar, toggleSidebar }) => {
 
 
   return (
-    <div className={`fixed inset-0 z-30 transform ${showSidebar ? 'translate-x-0' : '-translate-x-full'} md:relative md:translate-x-0 transition-transform duration-200 ease-in-out h-screen bg-white dark:bg-gray-800 p-5 shadow-md`}>
+    <div className={`fixed inset-0 z-30 transform ${showSidebar ? 'translate-x-0' : '-translate-x-full'} lg:relative lg:translate-x-0 transition-transform duration-200 ease-in-out h-screen bg-white dark:bg-gray-800 p-5 shadow-md`}>
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-4">
           <div className="rounded-full h-10 w-10 bg-gray-300"></div>

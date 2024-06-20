@@ -59,7 +59,16 @@ const TaskForm = () => {
     console.log("Form data:", data);
     try {
       const response = await axios.post<ApiResponse>(`/api/add-task`, data)
-      console.log(response);
+      if(response.data.success){
+        form.reset();
+        toast({
+          title: "Success",
+          description: response.data.message
+        })
+        setTimeout(() => {
+          location.reload();
+        }, 1000)
+      }
       setIsSubmitting(false)
     } catch (error) {
       console.error("Error in Task Save", error);
