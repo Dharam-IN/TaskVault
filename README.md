@@ -1,36 +1,85 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# TaskVault
+
+## Description
+TaskVault is a task management application designed to help users organize and track their tasks efficiently. This project utilizes modern web technologies and best practices to deliver a seamless user experience. Built with Next.js, TypeScript, Tailwind CSS, Resend, ShadCN, and React Hook Form, TaskVault showcases my proficiency in these technologies and my ability to create production-ready applications.
+
+## Live Demo
+- **[View Live](https://task-vault-smoky.vercel.app/)**
+
+## Features
+- **Task Management:** Easily create, update, and delete tasks.
+- **User Authentication:** Secure user authentication and session management.
+- **Responsive Design:** Fully responsive design for an optimal user experience on any device.
+- **Form Validation:** Robust form validation using React Hook Form.
+- **Dynamic UI:** Interactive and dynamic UI components with ShadCN.
+- **Email Notifications:** Email notifications for important task updates using Resend.
+
+## Technologies Used
+- **Next.js:** Framework for building server-side rendered React applications.
+- **TypeScript:** Strongly typed programming language that builds on JavaScript.
+- **Tailwind CSS:** Utility-first CSS framework for rapid UI development.
+- **Resend:** Service for sending email notifications.
+- **ShadCN:** Library for creating dynamic UI components.
+- **React Hook Form:** Library for managing form state and validation in React.
+
+## Usage
+1. Sign up or log in to your account to start managing tasks.
+2. Create new tasks with due dates and categories.
+3. Update the status of tasks as you progress.
+4. Delete tasks that are no longer needed.
+5. Receive email notifications for important task updates.
+
+## How to Run
+1. Clone this repository to your local machine:
+   ```sh
+   git clone https://github.com/Dharam-IN/TaskVault
+   Certainly! Here's the Markdown code for your `Readme.md` file based on the provided text:
+
+```markdown
+# Project Name
 
 ## Getting Started
 
-First, run the development server:
+### Navigate to the project directory:
+```sh
+cd task-vault
+```
 
-```bash
+### Install dependencies using npm or yarn:
+```sh
+npm install
+# or
+yarn install
+```
+
+### Run the development server:
+```sh
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Open your browser and navigate to http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Deployment
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+TaskVault is deployed using Vercel. To deploy your own version, follow these steps:
 
-## Learn More
+1. Create a Vercel account and install the Vercel CLI.
+2. Run the following command in your project directory:
+   ```sh
+   vercel
+   ```
+3. Follow the prompts to deploy your application.
 
-To learn more about Next.js, take a look at the following resources:
+## Credits
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Resend:** Email notification service used for sending emails.
+- **ShadCN:** Dynamic UI components library.
+- **React Hook Form:** Form management and validation library.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Author
 
-## Deploy on Vercel
+- [Dharam]
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Feel free to customize this README file according to your project's specifics and preferences.
